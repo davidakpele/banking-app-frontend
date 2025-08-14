@@ -1,0 +1,63 @@
+.sms-loader-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.loader-notification-sm {
+    position: relative;
+    width: 25px;
+    height: 55px;
+    background-repeat: no-repeat;
+    background-image:
+        linear-gradient(var(--loader-color, #000000) 50px, transparent 0),
+        linear-gradient(var(--loader-color, #000000) 50px, transparent 0),
+        linear-gradient(var(--loader-color, #000000) 50px, transparent 0),
+        linear-gradient(var(--loader-color, #000000) 50px, transparent 0),
+        linear-gradient(var(--loader-color, #000000) 50px, transparent 0),
+        linear-gradient(var(--loader-color, #000000) 50px, transparent 0);
+    background-size: 5px 40px;
+    background-position: 0px center, 10px center, 20px center, 30px center, 40px center, 50px center;
+    animation: spikeUp 1s linear infinite alternate;
+}
+
+.notification-drawer-light .loader-notification-sm {
+    --loader-color: #000000;
+    /* Black in light mode */
+}
+
+.notification-drawer-dark .loader-notification-sm {
+    --loader-color: #ffffff;
+    /* White in dark mode */
+}
+
+@keyframes spikeUp {
+    0% {
+        background-size: 5px 40px
+    }
+
+    16% {
+        background-size: 5px 55px, 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 40px
+    }
+
+    33% {
+        background-size: 5px 40px, 5px 55px, 5px 40px, 5px 40px, 5px 40px, 5px 40px
+    }
+
+    50% {
+        background-size: 5px 40px, 5px 40px, 5px 55px, 5px 40px, 5px 40px, 5px 40px
+    }
+
+    66% {
+        background-size: 5px 40px, 5px 40px, 5px 40px, 5px 55px, 5px 40px, 5px 40px
+    }
+
+    83% {
+        background-size: 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 55px, 5px 40px
+    }
+
+    100% {
+        background-size: 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 55px
+    }
+}
