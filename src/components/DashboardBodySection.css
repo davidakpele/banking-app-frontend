@@ -1,0 +1,146 @@
+.dashboard-body-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Services */
+.services-card {
+    background: #f4fbf4;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.services-header h2 {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.view-all {
+    color: #0d8f4b;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-3px);
+}
+
+.service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Banners */
+.banner-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.banner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #0d8f4b;
+    color: white;
+    border-radius: 12px;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.banner img {
+    height: 50px;
+    border-radius: 6px;
+}
+
+.banner-nav {
+    background: white;
+    border: none;
+    border-radius: 50%;
+    padding: 0.4rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Features */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.feature-card {
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.feature-card h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.feature-card p {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.8rem;
+}
+
+.feature-card button {
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Color variations */
+.feature-card.orange {
+    background: #fff6ed;
+}
+
+.feature-card.orange button {
+    background: #fca45d;
+}
+
+.feature-card.green {
+    background: #f1f9f4;
+}
+
+.feature-card.green button {
+    background: #0d8f4b;
+}
+
+.feature-card.blue {
+    background: #edf8ff;
+}
+
+.feature-card.blue button {
+    background: #4db3f7;
+}

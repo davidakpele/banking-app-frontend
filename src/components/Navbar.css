@@ -7,6 +7,7 @@
     font-family: 'Inter', -apple-system, sans-serif;
     border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
 }
 
 .nav-container {
@@ -213,6 +214,7 @@
     margin-left: 12px;
     font-size: 16px;
 }
+
 
 .mobile-dropdown-chevron {
     transition: transform 0.2s ease;
@@ -664,7 +666,7 @@ mobile-dropdown-light .mobile-dropdown-item {
 
     .mobile-dropdown-chevron {
         position: relative;
-        top: 4px;
+        top: 0px;
         left: 4px;
     }
 }
@@ -715,4 +717,10 @@ mobile-dropdown-light .mobile-dropdown-item {
 
 .close-notifications:hover {
     opacity: 1;
+}
+.dark-text-color{
+    color:#fff !important;
+}
+.light-text-color{
+    color:#000 !important;
 }

@@ -1,0 +1,61 @@
+.widget-container {
+    border: 1px solid #dedeed;
+    border-radius: 5px;
+    background-color: #dedeed;
+    padding: 10px;
+    margin: 1px auto;
+    width: 100%;
+    max-width: 100%;   
+    box-sizing: border-box; 
+}
+
+.all-services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.close-btn {
+    background-color: #cfcccc6c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.close-btn .fa-times {
+    color: #000;
+    font-size: 12px;
+}
+
+.all-services-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 559px) {
+    .all-services-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        width: 100%;
+    }
+
+    .action-container,
+    .button-container,
+    .all-services-container {
+        width: 100%;
+    }
+     .widget-container {
+        margin-left: 12px; 
+        margin-right: 12px;  
+        width: calc(100% - 24px);
+    }
+    
+}

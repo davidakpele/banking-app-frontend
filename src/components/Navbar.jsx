@@ -5,8 +5,11 @@ import { FaWallet, FaHome, FaUser, FaCreditCard, FaGift } from 'react-icons/fa';
 import { RiExchangeDollarFill } from 'react-icons/ri';
 import { MdAccountBalanceWallet } from 'react-icons/md';
 import ReactSwitch from 'react-switch';
+import WalletBanner from "./WalletBoard"
 import './Navbar.css';
 import './NotificationLoader.css';
+import OurServices from './Service';
+import { Link } from 'react-router-dom';
 
 const Loader = lazy(() => import('./Loader/Loader'));
 
@@ -86,25 +89,33 @@ const Navbar = () => {
   
 
 
-  const navItems = [
-    { name: 'Dashboard'},
-    { name: 'Wallets'},
-    { name: 'Virtual Cards'},
-    { name: 'Giftcard', dropdown: true },
-    { name: 'Deposit' },
-    { name: 'Withdraw' },
-    { name: 'Account', dropdown: true },
-  ];
+const navItems = [
+  { name: 'Dashboard', path: '/dashboard' },
+  { name: 'Wallets', path: '/wallets' },
+  { name: 'Virtual Cards', path: '/virtual-cards' },
+  { name: 'Giftcard', dropdown: true, path: '#', children: [
+      { name: 'Option 1', path: '/giftcard/option1' },
+      { name: 'Option 2', path: '/giftcard/option2' }
+  ]},
+  { name: 'Deposit', path: '/deposit' },
+  { name: 'Withdraw', path: '/withdraw' },
+  { name: 'Account', dropdown: true, path: '#', children: [
+      { name: 'Profile', path: '/account/profile' },
+      { name: 'Settings', path: '/account/settings' },
+      { name: 'Logout', path: '/logout' }
+  ]},
+];
+
 
     return (
       <>
       {isLoading ? (
-                  <Suspense>
-                    <Loader isLoading={isLoading} containerClass="#root" />
-                  </Suspense>
-                ) : (
-                  <>
-                  <nav className={`navbar ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
+        <Suspense>
+          <Loader isLoading={isLoading} containerClass="#root" />
+        </Suspense>
+      ) : (
+        <>
+    <nav className={`navbar ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
       <div className="nav-container">
         <div className="nav-content">
           {/* Logo/Brand */}
@@ -119,10 +130,9 @@ const Navbar = () => {
                     key={item.name} 
                     className="nav-item-container"
                     onMouseEnter={() => item.dropdown && handleMouseEnter(item.name)}
-                    onMouseLeave={handleMouseLeave}
-                  >
+                    onMouseLeave={handleMouseLeave}>
                     <div className={`nav-item ${item.dropdown ? 'has-dropdown' : ''}`}>
-                      <span className="nav-text">{item.name}</span>
+                      <Link to={item.path} className={`nav-text ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>{item.name}</Link>
                       {item.dropdown && (
                         <span className="dropdown-chevron">
                           {activeDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
@@ -134,20 +144,18 @@ const Navbar = () => {
                       <div 
                         className={`dropdown-menu ${theme === 'dark' ? 'dropdown-dark' : 'dropdown-light'}`}
                         onMouseEnter={() => handleMouseEnter(item.name)}
-                        onMouseLeave={handleMouseLeave}
-                      >
+                        onMouseLeave={handleMouseLeave}>
                         <div className="dropdown-content">
-                          <a href="#" className="dropdown-item">
-                            <span className="dropdown-icon">→</span>
-                            <span>Option 1</span>
-                          </a>
-                          <a href="#" className="dropdown-item">
-                            <span className="dropdown-icon">→</span>
-                            <span>Option 2</span>
-                          </a>
+                          {item.children.map(child => (
+                            <Link key={child.name} to={child.path} className={`dropdown-item ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
+                              <span className="dropdown-icon">→</span>
+                              <span>{child.name}</span>
+                            </Link>
+                          ))}
                         </div>
                       </div>
                     )}
+
                   </div>
                 ))}
               </div>
@@ -155,7 +163,7 @@ const Navbar = () => {
               <div className="nav-right">
                 {navItems.slice(4, 6).map((item) => (
                   <div key={item.name} className="nav-item">
-                    <span className="nav-text">{item.name}</span>
+                    <Link to={item.path} className={`nav-text ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>{item.name}</Link>
                   </div>
                 ))}
                 <div className="nav-item-container"onMouseEnter={() => handleMouseEnter('Account')}onMouseLeave={handleMouseLeave}>
@@ -167,23 +175,21 @@ const Navbar = () => {
                   </div>
                   
                   {activeDropdown === 'Account' && (
-                    <div className={`dropdown-menu ${theme === 'dark' ? 'dropdown-dark' : 'dropdown-light'}`} onMouseEnter={() => handleMouseEnter('Account')}onMouseLeave={handleMouseLeave}>
-                      <div className="dropdown-content">
-                        <a href="#" className="dropdown-item">
-                          <span className="dropdown-icon">👤</span>
-                          <span>Profile</span>
-                        </a>
-                        <a href="#" className="dropdown-item">
-                          <span className="dropdown-icon">⚙️</span>
-                          <span>Settings</span>
-                        </a>
-                        <a href="#" className="dropdown-item">
-                          <span className="dropdown-icon">🚪</span>
-                          <span>Logout</span>
-                        </a>
+                      <div 
+                        className={`dropdown-menu ${theme === 'dark' ? 'dropdown-dark' : 'dropdown-light'}`}
+                        onMouseEnter={() => handleMouseEnter('Account')}
+                        onMouseLeave={handleMouseLeave}>
+                        <div className="dropdown-content">
+                          {navItems.find(i => i.name === 'Account').children.map(child => (
+                            <Link key={child.name} to={child.path}  className={`dropdown-item ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
+                              <span className="dropdown-icon">{child.icon}</span>
+                              <span>{child.name}</span>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+
                 </div>
                 <div className="theme-switch-container">
                   <ReactSwitch
@@ -339,54 +345,62 @@ const Navbar = () => {
     </div>
 
     {/* Mobile Menu - Wizard Effect */}
-    {isMobile && (
-        <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''} ${
-            theme === 'dark' ? 'mobile-menu-dark' : 'mobile-menu-light'
-        }`}>
-            <div className="mobile-menu-content">
-            {navItems.map((item) => (
-                <div 
-                key={item.name} 
-                className={`mobile-nav-item-container ${activeDropdown === item.name ? 'active' : ''}`}
-                >
-                <div
-                    className={`mobile-nav-item ${item.dropdown ? 'has-dropdown' : ''}`}
-                    onClick={() => item.dropdown && setActiveDropdown(activeDropdown === item.name ? null : item.name)}>
-                    {item.icon}
-                    <span className="mobile-nav-text">{item.name}</span>
-                    {item.dropdown && (
-                    <span className="mobile-dropdown-chevron">
-                        {activeDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
-                    </span>
-                    )}
-                </div>
-
-                {item.dropdown && (
-                    <div className={`mobile-dropdown-menu ${theme === 'dark' ? 'mobile-dropdown-dark' : 'mobile-dropdown-light'}`}>
-                    <div className="mobile-dropdown-content">
-                        <a href="#" className="mobile-dropdown-item">
-                        <span className="dropdown-icon">→</span>
-                        <span>Option 1</span>
-                        </a>
-                        <a href="#" className="mobile-dropdown-item">
-                        <span className="dropdown-icon">→</span>
-                        <span>Option 2</span>
-                        </a>
-                    </div>
-                    </div>
-                )}
-                </div>
-            ))}
-
-                <div className="mobile-user-info">
-                <div className="mobile-user-indicator">D</div>
-                <span className="mobile-user-name">User Account</span>
-                </div>
+    {/* Mobile Menu */}
+{isMobile && (
+  <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''} ${
+    theme === 'dark' ? 'mobile-menu-dark' : 'mobile-menu-light'
+  }`}>
+    <div className="mobile-menu-content">
+      {navItems.map((item) => (
+        <div 
+          key={item.name} 
+          className={`mobile-nav-item-container ${activeDropdown === item.name ? 'active' : ''}`}
+        >
+          {/* Main mobile nav item */}
+          {!item.dropdown ? (
+            <Link to={item.path} className={`mobile-nav-item ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
+              {item.icon}
+              <span className="mobile-nav-text">{item.name}</span>
+            </Link>
+          ) : (
+            <div
+              className={`mobile-nav-item has-dropdown`}
+              onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+            >
+              {item.icon}
+              <span className="mobile-nav-text">{item.name}</span>
+              <span className="mobile-dropdown-chevron">
+                {activeDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
+              </span>
             </div>
+          )}
+
+          {/* Dropdown children */}
+          {item.dropdown && activeDropdown === item.name && item.children && (
+            <div className={`mobile-dropdown-menu ${theme === 'dark' ? 'mobile-dropdown-dark' : 'mobile-dropdown-light'}`}>
+              <div className="mobile-dropdown-content">
+                {item.children.map(child => (
+                  <Link key={child.name} to={child.path} className="mobile-dropdown-item">
+                    <span className="dropdown-icon">{child.icon || '→'}</span>
+                    <span>{child.name}</span>
+                  </Link>
+                ))}
+              </div>
             </div>
-        )}
-        </nav>
-                  </>
+          )}
+        </div>
+      ))}
+
+      {/* Mobile user info */}
+      <div className="mobile-user-info">
+        <div className="mobile-user-indicator">D</div>
+        <span className="mobile-user-name">User Account</span>
+      </div>
+    </div>
+  </div>
+)}
+    </nav>
+          </>
           )}
       </>
         

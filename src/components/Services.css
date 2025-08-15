@@ -1,0 +1,48 @@
+.action-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.button-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.service-btn {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 70px;
+    height: 70px;
+    background-color: #000;
+    color: white;
+    border: none;
+    white-space: normal;
+}
+
+.service-btn .icon {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.service-btn.active .icon {
+    color: red;
+}
+
+.service-btn .btn-text {
+    font-size: 10px;
+    text-align: center;
+    display: flex;
+}
+
+.quickAction {
+    color: #000;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}

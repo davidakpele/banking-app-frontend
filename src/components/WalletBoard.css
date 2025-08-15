@@ -1,0 +1,350 @@
+.wallet_board_container{
+    margin-top:70px
+}
+.review-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #f9f9f9;
+    border-radius: 5px;
+}
+
+.review-flex-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.review-flex-item small {
+    font-size: 9px;
+}
+
+.review-flex-item .review-main-content {
+    font-style: bolder;
+    font-weight: border;
+}
+
+.review-flex-item small {
+    margin: 5px 0;
+}
+
+.bank-container {
+    border: 1px solid #c6c6c6;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(249, 249, 249);
+}
+
+.pin-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-close-mode {
+    background: rgb(229, 229, 229) !important;
+    color: #000 !important;
+}
+
+.wallet-card-section .total::-webkit-scrollbar {
+    height: 4px;
+}
+
+.wallet-card-section .total::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 2px;
+}
+
+.wallet-card-section .total::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.balance-display {
+    display: flex;
+}
+
+.bal-amount {
+    font-size: 1.2em;
+}
+
+.balance-eye-icon {
+    margin-top: 5px;
+}
+
+.Loading_account_balance {
+    margin-top: 2px;
+    font-size: 20px;
+    color: white;
+    margin-left: 10px;
+}
+
+@media (max-width: 900px) {
+    .wallet-card .balance .wallet-card .balance {
+        display: block;
+        margin: 0 auto;
+        padding-left: "12px";
+        padding-left: "12px";
+    }
+
+    .wallet-card .balance,
+    .balance-display,
+    .balance-wrapper {
+        justify-content: center;
+        text-align: center;
+    }
+    .balance-wrapper {
+        margin-top:30px
+    }
+
+    .bal-amount {
+        font-size: 30px;
+    }
+
+    .currency-button {
+        width: 150px;
+    }
+
+    .Loading_account_balance {
+        margin-top: 2px;
+        font-size: 15px;
+        color: white;
+    }
+}
+
+.withdraw_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdraw_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    text-decoration: none;
+}
+
+.withdraw_box svg {
+    margin-bottom: 8px;
+}
+
+.withdraw_text {
+    text-align: center;
+    font-size: 14px;
+}
+
+.details-row {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+.container,
+.container-sm,
+.container-md {
+    max-width: 1250px
+}
+.color-dark{
+    color: #fff !important;
+}
+.color-light {
+    color: #000 !important;
+}
+.container-dark {
+    background-color: #ffffff;
+    color: #000 !important;
+    border-left: 1px solid #e0e0e0;
+}
+.container-light {
+    background-color: #1f2937;
+    color: #fff !important;
+    border-bottom-color: #374151;
+}
+
+
+
+.button-dark {
+    background-color: #1f2937;
+    color: #fff !important;
+}
+
+.button-light{
+    background-color: #fff;
+    color: #000 !important;
+}
+
+.text-dark {
+    color: #fff !important;
+}
+
+.text-light {
+   
+    color: #000 !important;
+}
+.card-body {
+    padding: 8.5rem 1.875rem 1.25rem
+}
+
+.welcome-message {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    margin-top:15px;
+ 
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 18px;
+    margin-right: 10px;
+}
+.user-name-out{
+    font-weight: 600;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.balance-row {
+    display: flex;
+    align-items: center;
+}
+
+.balance-icon-btn {
+    padding: 0;
+    margin-left: 8px;
+}
+
+.balance-icon {
+    font-size: 20px;
+    vertical-align: middle;
+}
+.itemContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    padding: 40px;
+}
+
+.itemContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+}
+
+@media (max-width: 768px) {
+    .itemContainer {
+            justify-content: center;
+            /* centers all items in container */
+        }
+    
+        .currency-button {
+            margin: 10px auto;
+            /* centers the button itself */
+        }
+    .items {
+        margin: 10px 0;
+    }
+}
+.pad {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}   
+.card {
+    margin-top: 30px;
+    position: relative;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border-radius: 7px;
+    width: auto;
+}   
+
+.card-body {
+    padding: 1.5rem 1.875rem 1.25rem;
+}
+@media (max-width: 768px) {
+    .card {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .card {
+        margin-top: 0;
+    }
+
+    .pad {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 35.9375rem) {
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+.currency-button {
+    width: 150px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    margin: 5px auto;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Light mode */
+.currency-button.light {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ccc;
+}
+
+.currency-button.light:hover {
+    background-color: #f1f1f1;
+}
+
+/* Dark mode */
+.currency-button.dark {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    border-color: #444;
+}
+
+.currency-button.dark:hover {
+    background-color: #333333;
+}
