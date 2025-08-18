@@ -1,0 +1,107 @@
+/* Add any custom styles here if needed */
+
+.box-widget{
+    width:100%;
+}
+.referral-code {
+    font-family: monospace;
+    background-color: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.container-grid{
+    border-radius:20px;
+    background:#fff;
+    border:1px solid #fff;
+    padding:20px;
+}
+.link-container{
+    width:40%
+}
+.flex-copy-item{
+    display: flex;
+    align-items: center; 
+    justify-content:space-between;
+}
+.copy-content {
+    font-family: monospace;
+    background-color: #f5f5f5;
+    padding: 8px 16px;      
+    border-radius: 4px;     
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.referral-link {
+    font-family: monospace;
+    background-color: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.copy-button {
+    margin-top: 8px;
+}
+
+.stats-container {
+    margin-top: 24px;
+}
+
+.stat-card {
+    padding: 16px;
+    text-align: center;
+}
+.color-dark {
+    color: #040404 !important;
+}
+
+.color-light {
+    color: #fff !important;
+}
+.sub-title{
+    font-size:15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.header-o{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.referrals-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.referrals-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+}
+
+.referrals-table tr:hover {
+    background-color: #fafafa;
+}
+
+/* Responsive table */
+@media (max-width: 600px) {
+    .referrals-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+@media (max-width: 945px) {
+    .card-widget{
+        width:100% !important;
+    }
+    .link-container {
+        width: 100% !important;
+    }
+}

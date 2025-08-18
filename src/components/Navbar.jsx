@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 const Loader = lazy(() => import('./Loader/Loader'));
 
 const Navbar = () => {
-    const { theme, toggleTheme } = useContext(ThemeContext);
+    const { theme, toggleTheme, themeLoaded } = useContext(ThemeContext);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -27,11 +27,13 @@ const Navbar = () => {
         document.title = 'Dashboard | Default | Home';
       
         setTimeout(() => {
-          setIsLoading(false);
+          if (themeLoaded) {
+            setIsLoading(false); 
+          }
           setINotificationLoading(false);
         }, 3000);
           
-      }, []);
+      }, [themeLoaded]);
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 1200);
@@ -119,7 +121,9 @@ const navItems = [
       <div className="nav-container">
         <div className="nav-content">
           {/* Logo/Brand */}
-          <div className="nav-brand">MyApp</div>
+          <div className="nav-brand">
+            <Link to={'/dashboard'} style={{color: theme === 'dark'?'#fff':'#333'}}>MyApp</Link>
+          </div>
 
           {/* Desktop Navigation */}
           {!isMobile && (
@@ -344,61 +348,60 @@ const navItems = [
         </div>
     </div>
 
-    {/* Mobile Menu - Wizard Effect */}
     {/* Mobile Menu */}
-{isMobile && (
-  <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''} ${
-    theme === 'dark' ? 'mobile-menu-dark' : 'mobile-menu-light'
-  }`}>
-    <div className="mobile-menu-content">
-      {navItems.map((item) => (
-        <div 
-          key={item.name} 
-          className={`mobile-nav-item-container ${activeDropdown === item.name ? 'active' : ''}`}
-        >
-          {/* Main mobile nav item */}
-          {!item.dropdown ? (
-            <Link to={item.path} className={`mobile-nav-item ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
-              {item.icon}
-              <span className="mobile-nav-text">{item.name}</span>
-            </Link>
-          ) : (
-            <div
-              className={`mobile-nav-item has-dropdown`}
-              onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-            >
-              {item.icon}
-              <span className="mobile-nav-text">{item.name}</span>
-              <span className="mobile-dropdown-chevron">
-                {activeDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
-              </span>
-            </div>
-          )}
-
-          {/* Dropdown children */}
-          {item.dropdown && activeDropdown === item.name && item.children && (
-            <div className={`mobile-dropdown-menu ${theme === 'dark' ? 'mobile-dropdown-dark' : 'mobile-dropdown-light'}`}>
-              <div className="mobile-dropdown-content">
-                {item.children.map(child => (
-                  <Link key={child.name} to={child.path} className="mobile-dropdown-item">
-                    <span className="dropdown-icon">{child.icon || '→'}</span>
-                    <span>{child.name}</span>
+      {isMobile && (
+        <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''} ${
+          theme === 'dark' ? 'mobile-menu-dark' : 'mobile-menu-light'
+        }`}>
+          <div className="mobile-menu-content">
+            {navItems.map((item) => (
+              <div 
+                key={item.name} 
+                className={`mobile-nav-item-container ${activeDropdown === item.name ? 'active' : ''}`}
+              >
+                {/* Main mobile nav item */}
+                {!item.dropdown ? (
+                  <Link to={item.path} className={`mobile-nav-item ${theme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
+                    {item.icon}
+                    <span className="mobile-nav-text">{item.name}</span>
                   </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
+                ) : (
+                  <div
+                    className={`mobile-nav-item has-dropdown`}
+                    onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                  >
+                    {item.icon}
+                    <span className="mobile-nav-text">{item.name}</span>
+                    <span className="mobile-dropdown-chevron">
+                      {activeDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
+                    </span>
+                  </div>
+                )}
 
-      {/* Mobile user info */}
-      <div className="mobile-user-info">
-        <div className="mobile-user-indicator">D</div>
-        <span className="mobile-user-name">User Account</span>
-      </div>
-    </div>
-  </div>
-)}
+                {/* Dropdown children */}
+                {item.dropdown && activeDropdown === item.name && item.children && (
+                  <div className={`mobile-dropdown-menu ${theme === 'dark' ? 'mobile-dropdown-dark' : 'mobile-dropdown-light'}`}>
+                    <div className="mobile-dropdown-content">
+                      {item.children.map(child => (
+                        <Link key={child.name} to={child.path} className="mobile-dropdown-item">
+                          <span className="dropdown-icon">{child.icon || '→'}</span>
+                          <span>{child.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* Mobile user info */}
+            <div className="mobile-user-info">
+              <div className="mobile-user-indicator">D</div>
+              <span className="mobile-user-name">User Account</span>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
           </>
           )}

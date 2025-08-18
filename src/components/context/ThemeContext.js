@@ -2,27 +2,38 @@ import { createContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext();
 
-function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light");
+function ThemeProvider  ({ children }) {
+  const [theme, setTheme] = useState(null); // initially unknown
+  const [themeLoaded, setThemeLoaded] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(prefersDark ? "dark" : "light");
+    }
+    setThemeLoaded(true);
   }, []);
 
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    }
+  }, [theme]);
+
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+    <ThemeContext.Provider value={{ theme, toggleTheme, themeLoaded }}>
+      {themeLoaded ? children : null} 
+      {/* You can replace null with a loader */}
     </ThemeContext.Provider>
   );
-}
-
+};
 export default ThemeProvider;

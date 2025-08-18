@@ -4,7 +4,7 @@
 @import url("./assets/css/styles.css");
 @import url("./assets/fontawesome/css/all.css");
 :root {
-  --bg-color: #ffffff;
+  --bg-color: #f8f9f9;
   --text-color: #000000;
 }
 .dark {
@@ -27,6 +27,7 @@ body {
 .grid-container{
   display:grid;
   grid-template-rows: auto auto;
+  
 }
 .card-body {
   padding: 1.5rem 1.875rem 1.25rem;

@@ -5,6 +5,17 @@
     align-items: center;
     height: 100%;
 }
+.sms-bank-container-loader{
+    position: relative;
+    margin-left:100px;
+    height: 100%;
+    margin-top:70px;
+}
+@media (max-width: 768px) {
+    .sms-bank-container-loader{
+           margin:0 auto !important;
+    }
+}
 .loader-notification-sm {
     position: relative;
     width: 25px;

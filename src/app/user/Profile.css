@@ -1,0 +1,363 @@
+.profile-container {
+    font-family: "Inter", sans-serif;
+    padding: 20px;
+    width: 100%;
+    margin-top: 70px;
+}
+
+/* Header */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.profile-header-dark-bg{
+    background-color: #1f2937;
+    color: #fff;
+    border-bottom-color: #374151;
+}
+.profile-header-light-bg {
+    background-color: #fff;
+    color: #000;
+    border-bottom-color: #fff;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Karla", sans-serif;
+    flex-wrap: wrap;
+}
+.user-details{
+    margin-top:20px
+}
+.user-name-display{
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 40px; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-bg-dark {
+    background: var(--ck-color-button-default-background) !important;
+    border: 3px solid var(--text) !important;
+}
+
+.avatar-bg-light {
+    background: var(--toastify-text-color-error) !important;
+    border: 3px solid var(--ck-color-shadow-drop) !important;
+}  
+.user-profile-image{
+    font-size:20px;
+    margin:0 auto
+}
+.status-badge {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* Tabs */
+.profile-tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  gap: 30px; 
+  flex-wrap: wrap;
+}
+/* flex container for icon + title */
+.tab-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 6px;
+}
+
+.tab-icon {
+  display: flex;
+  font-size: 18px;
+}
+
+.tab-title {
+  font-size: 14px;
+}
+.tab {
+  background: none;
+  border: none;
+  font-size: 15px;
+  padding: 8px 14px; 
+  cursor: pointer;
+  color: #666;
+  position: relative;
+  flex-shrink: 0;
+}
+.tab:not(:last-child) {
+    margin-right: 70px;
+}
+
+.tab.active {
+    color: #2d7a22;
+    font-weight: 600;
+    border-bottom: 2px solid #2d7a22;
+}
+
+/* Verification Section */
+.verification-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.verify-card {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    display: flex;
+    border-radius: 8px;
+    justify-content: space-between;
+    flex: 1 1 45%;
+    padding: 15px;
+}
+.card-details{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.verify-info h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.verify-info p {
+    margin: 3px 0 0;
+    color: #555;
+    font-size: 14px;
+}
+
+
+.checkmark {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    color:#fff;
+    align-items: center;
+    justify-content: center;
+    background: green;
+    border:1px solid green;
+}
+
+.warning {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    color:#fff;
+    align-items: center;
+    justify-content: center;
+    background: orange;
+    border:1px solid orange;
+    margin-top:10px
+}
+
+.pending{
+    width:450px !important;
+}
+/* Info Banner */
+.info-banner {
+    background: #f3f9f2;
+    border-left: 4px solid #2d7a22;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    margin-top:20px;
+    color: #333;
+}
+
+/* User Verification */
+.user-verification {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.line {
+    width: 4px;
+    background: #2d7a22;
+    border-radius: 10px;
+}
+
+.verification-details h4 {
+    margin: 0 0 8px;
+}
+
+.status-unverified {
+    background: #fdecec;
+    color: #e74c3c;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.verify-btn {
+    color: #fff !important;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+}
+.verify-btn-gb-dark{
+    background: #2d7a22 !important;
+}
+.verify-btn-gb-light {
+    background: #090909 !important;
+}
+.verify-icon{
+    font-size:25px;
+}
+ .mobile-only {
+     display: none;
+ }
+
+@media (max-width: 768px) {
+
+    .profile-tabs {
+        gap: 10px;
+        overflow-x: auto;
+    }
+
+    .tab {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .verify-card {
+        flex: 1 1 100%;
+    }
+
+    .verify-info h4 {
+        font-size: 14px;
+    }
+
+    .verify-info p {
+        font-size: 12px;
+    }
+
+    .verify-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .status-badge {
+        font-size: 12px;
+        padding: 4px 20px;
+    }
+
+    .profile-tabs {
+        font-size: 13px;
+    }
+
+    .info-banner {
+        font-size: 12px;
+    }
+}
+
+
+/* Default: Hide mobile, show desktop */
+.mobile-only {
+    display: none !important;
+}
+
+.desktop-only {
+    display: block;
+}
+
+/* Mobile breakpoint - switch visibility */
+@media (max-width: 945px) {
+    .mobile-only {
+        display: block !important;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+    .menu-item{
+        padding-top: 15px !important; 
+        margin-top:5px !important;
+    }
+}
+/* Mobile Menu */
+.profile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fff;
+    transition: background 0.2s;
+}
+
+.menu-item:hover {
+    background: #f9f9f9;
+}
+
+.menu-icon {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.menu-info h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.menu-info p {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.menu-arrow {
+    font-size: 20px;
+    color: #1f2937;
+    margin-left: auto;
+}
+

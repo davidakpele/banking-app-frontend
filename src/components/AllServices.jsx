@@ -1,19 +1,21 @@
 import './AllServices.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Suspense, useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext';
 
 const AllServices = ({ serviceLabels, activeButton, handleButtonClick, setShowAllServices }) => {
   const serviceLinks = [
-    '/service/airtime', '/service/data', '/service/cabletv', '/service/electricity', '/service/buy-gift-card',
-    '/service/sell-gift-card', '/service/betting', '/service/swap-crypto', '/service/book-flight',
+    '/service/buy-airtime', '/service/buy-data-bundle', '/service/subscribe-cabletv', '/service/pay-electricity', '/service/request-virtual-card',
+    '/service/pay-hospital-bill', '/service/load-betting-wallet', '/service/swap', '/service/book-flight', '/service/pay-shopping'
   ];
-
+   const { theme } = useContext(ThemeContext);
   return (
     <>
       <div className="cancle-container mt-3">
         <div className="all-services-header">
-          <span className='quickAction'>Services</span>
-          <button className="close-btn" onClick={() => setShowAllServices(false)}>
+          <span className={`quickAction ${theme === "dark" ? "color-light" : "color-dark"}`}>Services</span>
+          <button className={`close-btn ${theme === "dark" ? "color-light" : "color-dark"}`} onClick={() => setShowAllServices(false)} >
             <i className="fa fa-times" aria-hidden="true"></i>
           </button>
         </div>
@@ -56,17 +58,19 @@ const getIconClass = (label) => {
     case 'CableTv':
       return 'fa-tv';
     case 'Electricity':
-      return 'fa-bolt';
-    case 'Buy Gift Card':
+      return 'fa-lightbulb';
+    case 'Virtual Card':
       return 'fa-credit-card';
-    case 'Sell Gift Card':
-      return 'fa-credit-card';
+    case 'Hospital':
+      return 'fa-medkit';
     case 'Betting':
       return 'fa-train';
-    case 'Swap Crypto':
-      return 'fa-credit-card';
+    case 'Swap':
+      return 'fa-exchange';
     case 'Book Flight':
       return 'fa-plane';
+    case 'Shopping':
+      return 'fa-shopping-cart';
     default:
       return '';
   }

@@ -19,12 +19,19 @@
 }
 
 .close-btn {
-    background-color: #cfcccc6c;
-    color: white;
+
     border: none;
     padding: 5px 10px;
     border-radius: 20px;
     cursor: pointer;
+}
+.close-btn.color-light {
+    background-color: #fff;
+    color: #000;
+}
+.close-btn.color-dark {
+    background-color: #cfcccc6c;
+    color: #fff;
 }
 
 .close-btn .fa-times {
@@ -38,7 +45,14 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-
+@media (min-width: 1000px) {
+    .all-services-container {
+        overflow-x: hidden;
+        white-space: normal;
+        flex-wrap: wrap;
+        /* services wrap into multiple rows */
+    }
+}
 @media (max-width: 559px) {
     .all-services-buttons {
         display: grid;

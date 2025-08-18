@@ -2722,19 +2722,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     padding: 6px 0 6px 10px
 }
 
-@media only screen and (max-width: 575px) {
-
-    .filter-pagination .previous-button,
-    .filter-pagination .next-button {
-        padding: 8px 10px;
-        font-size: 14px
-    }
-}
-
-
-
-
-
 /*!
  * Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -38652,29 +38639,6 @@ fieldset:disabled .btn {
     overflow-y: auto
 }
 
-@media (max-width: 575.98px) {
-    .modal-fullscreen-sm-down {
-        width: 100vw;
-        max-width: none;
-        height: 100%;
-        margin: 0
-    }
-
-    .modal-fullscreen-sm-down .modal-content {
-        height: 100%;
-        border: 0;
-        border-radius: 0
-    }
-
-    .modal-fullscreen-sm-down .modal-header,
-    .modal-fullscreen-sm-down .modal-footer {
-        border-radius: 0
-    }
-
-    .modal-fullscreen-sm-down .modal-body {
-        overflow-y: auto
-    }
-}
 
 @media (max-width: 767.98px) {
     .modal-fullscreen-md-down {

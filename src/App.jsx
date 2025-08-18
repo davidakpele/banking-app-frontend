@@ -4,6 +4,8 @@ import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import './App.css'
 import Wallet from './app/Wallet';
+import Profile from './app/user/Profile';
+import AddBank from './app/user/AddBank';
 
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
           <Route path="/" element={<PublicRoute><Home /></PublicRoute>}/>
           <Route path="*" element={<PublicRoute><Home /></PublicRoute>} />
           <Route path="/wallets" element={<PublicRoute><Wallet /></PublicRoute>} />
+          <Route path="/account/profile" element={<PublicRoute><Profile /></PublicRoute>} />
+          <Route path="/account/add-bank" element={<PublicRoute><AddBank /></PublicRoute>} />
           {/* <Route path="/user/deposit" element={<PrivateRoute><Deposit /></PrivateRoute>} />
           <Route path="/deposit/naira" element={<PrivateRoute><Deposit /></PrivateRoute>} />
           <Route path="/user/add-bank" element={<PrivateRoute><AddNewBank /></PrivateRoute>} />
