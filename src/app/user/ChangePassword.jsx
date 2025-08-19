@@ -152,7 +152,7 @@ const ChangePassword = () => {
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={12}>
                                 <div className="mb-3 position-relative">
-                                    <label className="form-label required">Current Password</label>
+                                    <label className={`form-label required ${theme === "dark" ? "color-light":"color-dark"}`}>Current Password</label>
                                     <input
                                         ref={passwordRef}
                                         type={showPasswords.password ? "text" : "password"}
@@ -176,7 +176,7 @@ const ChangePassword = () => {
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={12}>
                                 <div className="mb-3 position-relative">
-                                    <label className="form-label required">New Password</label>
+                                    <label className={`form-label required ${theme === "dark" ? "color-light":"color-dark"}`}>New Password</label>
                                     <input
                                         ref={newPasswordRef}
                                         type={showPasswords.new_password ? "text" : "password"}
@@ -228,7 +228,7 @@ const ChangePassword = () => {
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={12}>
                                 <div className="mb-3 position-relative">
-                                    <label className="form-label required">Confirm New Password</label>
+                                    <label className={`form-label required ${theme === "dark" ? "color-light":"color-dark"}`}>Confirm New Password</label>
                                     <input
                                         ref={confirmPasswordRef}
                                         type={showPasswords.confirm_password ? "text" : "password"}

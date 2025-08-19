@@ -1,16 +1,19 @@
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState, Suspense } from 'react';
-import { Grid, Card, CardContent, Typography, Box, Avatar } from "@mui/material";
+import { useEffect, useState, Suspense, useContext } from 'react';
+import { Grid } from "@mui/material";
 import service from '../services/BankServices'
 import $ from 'jquery';
 import Navbar from './../../components/Navbar';
 import "./AddBank.css"
 import FiatModal from '../../components/modal/FiatModal';
+import BankListModal from '../../components/modal/BankListModal';
+import { ThemeContext } from "../../components/context/ThemeContext";
 
 const AddBank = () => {
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
   const [selectedBank, setSelectedBank] = useState(null);
   const [selectedFiat, setSelectedFiat] = useState(null);
   const [verify, setVerify] = useState(false);
@@ -249,33 +252,47 @@ const AddBank = () => {
     setIsModalOpen(true);
     setBanks([]); 
     setSearchQuery('')
-    getBank();
   };
   
   const handleSelectFiat = () => {
     setIsFiatModalOpen(true);
     setFiat([]);
   }
+
+  const handleBankSelect = (bank) => {
+    console.log("Bank selected:", bank);
+    // do something with the selected bank...
+    setIsModalOpen(false); // close modal after selection if you want
+  };
  
   return (
     <>
       <Navbar />
       <div className="deposit_items">
-         {isFiatModalOpen && (
-        <Suspense fallback={<div>Loading modal...</div>}>
-          <FiatModal show={isFiatModalOpen}  onClose={() => setIsFiatModalOpen(false)}
-          />
-        </Suspense>
-      )}
+         {isFiatModalOpen && ( 
+              <Suspense fallback={<div>Loading modal...</div>}>
+                <FiatModal show={isFiatModalOpen}  onClose={() => setIsFiatModalOpen(false)} 
+                />
+              </Suspense>
+            )}
+             {isModalOpen && (  
+                <Suspense fallback={<div>Loading modal...</div>}>
+                  <BankListModal 
+                    show={isModalOpen}  
+                    onClose={() => setIsModalOpen(false)} 
+                    onSelectBank={handleBankSelect}  
+                  />
+                </Suspense>
+              )}
           <div className="mini_container login_widget mb-5">
-            <div className="container_card">
+            <div className={`container_card ${theme === "dark" ? "container_card_light":"container_card_dark"}`}>
               <div className="back-arrow" onClick={handlePreviousPage}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26"><g data-name="Layer 2"><path d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64z" data-name="arrow-ios-back"></path></g></svg>    
-                  <div className="mt-1">Back</div>
+                  <div className={`mt-1 ${theme === "dark" ? "color-dark":"color-dark"}`}>Back</div>
                 </div>
                 <div className="justify-content-center">
                   <h4 className="deposit_card_title">Add New Bank Account</h4>
-                  <div className="deposit_fill mb-4">
+                  <div className={`deposit_fill mb-4 ${theme === "dark" ? "color-dark":"color-dark"}`}>
                     <b>NOTE:</b> Accounts added here are solely for deposits and not for withdrawals. Make sure it is your own account and the account name matches Alan Bola
                   </div>
                   <form method="post" onSubmit={handleSubmitForm} autoComplete='off'>
@@ -307,7 +324,7 @@ const AddBank = () => {
                     <Grid container spacing={2}>
                       <Grid item xs={12} md={12}>
                           <Form.Label htmlFor='Fiat' className='required'>Fiat</Form.Label>
-                          <div onClick={handleSelectFiat} className="form-control customSelect">
+                          <div onClick={handleSelectFiat} className="customSelect">
                             <span className="spanText">{selectedFiat ? selectedFiat.name : 'Select Fiat'}</span>
                           </div>
                           <span className="form-bottom-label text-success mt-2" style={{ display: error.bank ? 'block' : 'none' }}>
@@ -319,7 +336,7 @@ const AddBank = () => {
                       </Grid>
                       <Grid item xs={12} md={12}>
                           <Form.Label htmlFor='banks' className='required'>Bank</Form.Label>
-                          <div onClick={handleSelectClick} className="form-control customSelect">
+                          <div onClick={handleSelectClick} className="customSelect">
                             <span className="spanText">{selectedBank ? selectedBank.name : 'Select Bank'}</span>
                           </div>
                           <span className="form-bottom-label text-success mt-2" style={{ display: error.bank ? 'block' : 'none' }}>
@@ -342,11 +359,6 @@ const AddBank = () => {
                         </span>
                       </Grid>
                     </Grid>
-                  
-                    
-                      {/* <Select options={options} onChange={handleBankChange}/> */}
-                       
-                     
                       <span className="form-bottom-label text-invalid-account"  style={{ display: error.accountNumber ? 'block' : 'none' }}>
                         <div className="d-flex gap-2">
                           <svg xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" imageRendering="optimizeQuality" shapeRendering="geometricPrecision" textRendering="geometricPrecision" version="1.0" viewBox="0 0 8.346 8.346" width="10" height="10"><rect width="8.346" height="8.346" fill="none"></rect><path fill="#e2311d" fillRule="nonzero" d="M8.28 6.905l-3.766 -5.9c-0.039,-0.061 -0.088,-0.108 -0.145,-0.139l-0.001 0c-0.056,-0.031 -0.122,-0.047 -0.195,-0.047 -0.073,0 -0.14,0.016 -0.195,0.047l-0.002 0c-0.056,0.031 -0.105,0.078 -0.144,0.139l-0.659 1.032 -3.107 4.868c-0.041,0.065 -0.064,0.135 -0.066,0.204 -0.002,0.069 0.015,0.14 0.053,0.208l0 0.001c0.036,0.067 0.087,0.119 0.147,0.155 0.059,0.035 0.129,0.054 0.207,0.054l2.575 0 4.957 0c0.078,0 0.148,-0.019 0.207,-0.054 0.06,-0.036 0.11,-0.088 0.147,-0.155l0 -0.001c0.037,-0.068 0.055,-0.139 0.053,-0.208 -0.003,-0.069 -0.025,-0.139 -0.066,-0.204zm-4.107 -0.299l0 0c-0.177,0 -0.32,-0.143 -0.32,-0.32 0,-0.177 0.143,-0.32 0.32,-0.32 0.177,0 0.32,0.143 0.32,0.32 0,0.177 -0.143,0.32 -0.32,0.32zm0.318 -1.309l0 0c-0.009,0.189 -0.153,0.286 -0.302,0.29 -0.003,0 -0.007,0 -0.01,0 -0.02,0 -0.039,-0.006 -0.058,-0.009 -0.017,-0.003 -0.033,-0.003 -0.049,-0.008 -0.021,-0.007 -0.04,-0.02 -0.059,-0.031 -0.013,-0.008 -0.028,-0.013 -0.04,-0.023 -0.02,-0.016 -0.034,-0.038 -0.049,-0.059 -0.007,-0.011 -0.018,-0.019 -0.024,-0.031 -0.018,-0.036 -0.03,-0.079 -0.032,-0.128l-0.094 -1.841c0,-0.041 0.003,-0.08 0.009,-0.116 0.004,-0.021 0.01,-0.04 0.015,-0.06 0.004,-0.013 0.006,-0.028 0.011,-0.041 0.006,-0.018 0.015,-0.033 0.023,-0.05 0.005,-0.011 0.01,-0.024 0.016,-0.034 0.008,-0.015 0.019,-0.026 0.028,-0.039 0.008,-0.01 0.014,-0.022 0.023,-0.031 0.011,-0.012 0.023,-0.021 0.035,-0.031 0.008,-0.008 0.016,-0.016 0.025,-0.023 0.014,-0.01 0.029,-0.017 0.043,-0.024 0.008,-0.005 0.016,-0.01 0.024,-0.014 0.014,-0.006 0.028,-0.009 0.042,-0.013 0.01,-0.003 0.02,-0.008 0.03,-0.01 0.011,-0.002 0.023,-0.002 0.034,-0.004 0.013,-0.001 0.027,-0.004 0.04,-0.004 0,0 0,0 0,0 0.011,0 0.022,0.003 0.033,0.004 0.014,0.001 0.028,0.001 0.042,0.004 0.01,0.002 0.02,0.007 0.03,0.01 0.014,0.004 0.028,0.007 0.042,0.013 0.01,0.005 0.019,0.011 0.028,0.017 0.013,0.007 0.027,0.013 0.039,0.022 0.008,0.005 0.014,0.013 0.021,0.018 0.014,0.012 0.027,0.023 0.04,0.036 0.005,0.006 0.009,0.014 0.014,0.02 0.013,0.016 0.026,0.031 0.037,0.05 0.008,0.012 0.013,0.028 0.02,0.042 0.006,0.014 0.014,0.027 0.019,0.042 0.008,0.023 0.013,0.048 0.019,0.074 0.002,0.009 0.005,0.017 0.007,0.026 0.005,0.036 0.009,0.075 0.009,0.116l-0.081 1.84z" className="colore2311d svgShape"></path></svg>

@@ -13,9 +13,10 @@
 .form-widget{
     width:300px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1198px) {
     .form-container {
         margin: 2rem auto;
+        width: 100%  !important;
     }
     .form-widget {
         width: 100%;
@@ -83,7 +84,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1198px) {
     .submit-button {
         width: 100% !important;
     }

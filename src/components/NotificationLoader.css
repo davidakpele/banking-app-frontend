@@ -11,10 +11,11 @@
     height: 100%;
     margin-top:70px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1198px) {
     .sms-bank-container-loader{
-           margin:0 auto !important;
+           margin:0 !important;
     }
+  
 }
 .loader-notification-sm {
     position: relative;
@@ -32,15 +33,13 @@
     background-position: 0px center, 10px center, 20px center, 30px center, 40px center, 50px center;
     animation: spikeUp 1s linear infinite alternate;
 }
-
+.sms-bank-container-loader-light .loader-notification-sm,
 .notification-drawer-light .loader-notification-sm {
     --loader-color: #000000;
-    /* Black in light mode */
 }
-
+.sms-bank-container-loader-dark .loader-notification-sm,
 .notification-drawer-dark .loader-notification-sm {
     --loader-color: #ffffff;
-    /* White in dark mode */
 }
 
 @keyframes spikeUp {

@@ -54,9 +54,8 @@ const Profile = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              className={activeTab === tab.id ? "tab active" : "tab"}
+              className={`${theme === "dark" ? "color-light" : ""} ${activeTab === tab.id ? "tab active" : "tab"}`}
               onClick={() => setActiveTab(tab.id)}>
-              
               <div className="tab-content">
                 <span className="tab-icon">{tab.icon}</span>
                 <span className="tab-title">{tab.title}</span>
@@ -64,8 +63,6 @@ const Profile = () => {
             </button>
           ))}
         </div>
-
-
         {/* Mobile Menu */}
         <div className="mobile-only profile-menu">
           {tabs.map((tab) => (
@@ -89,7 +86,6 @@ const Profile = () => {
           {activeTab === "verify-identity" && (
             <>
                <Grid container spacing={2}>
-
                   {/* Email Verified */}
                   <Grid item xs={12} md={6}>
                     <Card sx={{ display: "flex", justifyContent: "space-between", p: 2 }}>

@@ -1,9 +1,11 @@
-import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import React, {useContext} from "react";
+import {  Button } from "react-bootstrap";
 import "./FiatModal.css"
+import {ThemeContext} from "../context/ThemeContext"
 
 
-const FiatModal = ({ show, onClose, children }) => {
+const FiatModal = ({ show, onClose }) => {
+  const { theme } = useContext(ThemeContext);
      if (!show) return null; // don’t render if not visible
 
   return (
@@ -16,12 +18,19 @@ const FiatModal = ({ show, onClose, children }) => {
                 <h4 className="text-center">Select Fiat</h4>
             </div>
 
-        <div className="modal-body">{children}</div>
-
+        <div className="modal-body">
+          <div className="form-group has-search">
+            <span className="fa fa-search form-control-feedback"></span>
+            <input type="text" className="form-control search-banks" placeholder="Search Fiat..." aria-describedby="search-addon" />
+          </div>
+        </div>
+        <div class="bank-container-list">
+          <div class={`no-data-found text-center ${theme === "dark" ? "color-dark":"color-dark"}`}>No data found</div>
+        </div>
         <div className="modal-footer">
-          <button className="confirm-btn" onClick={onClose}>
-            Close
-          </button>
+         <Button type='submit'  className="custom-btn w-100 mt-4 mb-4">
+            Select
+          </Button>
         </div>
       </div>
     </div>

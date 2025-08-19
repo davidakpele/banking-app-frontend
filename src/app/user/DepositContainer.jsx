@@ -27,20 +27,20 @@ function DepositContainer() {
           <p className='info-inst'><strong className="strong-note">Note: </strong>You are only allowed to add a total of 5 banks per currency</p>
           <div className="deposit-details-container">
             {/* show loading first for 3 seconds*/}
-          {isLoading ? (<div className="sms-bank-container-loader">
-            <div className='loader-notification-sm' />
-          </div>
-          ) : (
+          {isLoading ? (
+              <div className={`sms-bank-container-loader ${theme === "dark" ? "sms-bank-container-loader-dark":"sms-bank-container-loader-light"}`} >
+                <div className={`loader-notification-sm ${theme === "dark" ? "color-dark":"color-light"}`} />
+              </div>
+            ) : (
               <>
                {/* Show this container after loader */}
+               
               <div className="add-bank-container" onClick={handleRedirect}>
                 <FaPlus className="add-icon" />
                 <span>Add New Bank Account</span>
               </div>
               </>
           )}
-                  
-           
           </div>
       </div>
     </>

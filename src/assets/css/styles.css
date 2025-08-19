@@ -2072,14 +2072,20 @@ i {
 
 @media (max-width: 540px) {
     .service-action-container {
-        max-width: 470px !important;
+        max-width: 430px !important;
         margin: auto 0;
     }
 }
 
 @media (max-width: 495px) {
     .service-action-container {
-        max-width: 380px !important;
+        max-width: 300px !important;
+        margin: auto 0;
+    }
+}
+@media (max-width: 395px) {
+    .service-action-container {
+        max-width: 480px !important;
         margin: auto 0;
     }
 }

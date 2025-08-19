@@ -149,7 +149,7 @@ const Wallet = () => {
         <div  className={`${theme === 'dark' ? 'balance-section' : 'balance-container-dark'}`}>
             <div className="balance-info">
               <div className="balance-text-eye">
-                <span  className={`${theme === "dark" ? "color-dark" : "color-light"}`} style={{fontSize:"15px"}}>Available balances</span>
+                <span  className={`${theme === "dark" ? "color-dark" : "color-light"}`} style={{fontSize:"18px"}}>Available balances</span>
                   <IconButton onClick={handleAmountVisibility} className="hide-amount">
                       {showAmount ? (
                         <VisibilityIcon
@@ -164,7 +164,7 @@ const Wallet = () => {
                   </IconButton>
                 
             </div>
-            <span>NGN {showAmount ? '5,000,000.00' : <span className='close-amount'>*************</span>}</span>
+            <span style={{fontSize:"20px"}}>NGN {showAmount ? '5,000,000.00' : <span className='close-amount'>*************</span>}</span>
           </div>
           <div className="balance-actions">
             <button className="action-btn">Deposit</button>

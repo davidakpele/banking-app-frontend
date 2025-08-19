@@ -67,7 +67,7 @@ const Navbar = () => {
             setINotificationLoading(true);
             setTimeout(() => {
                 setINotificationLoading(false);
-            }, 2000); // Simulate loading time
+            }, 2000);
         }
         setActiveDropdown(null); 
     };
@@ -258,7 +258,6 @@ const navItems = [
             {/* Notification Drawer */}
             {showNotifications && (
                 <>
-                
                 <div className={`notification-overlay ${showNotifications ? 'show' : ''}`} onClick={toggleNotifications}/>
                 
                 <div className={`notification-drawer ${theme === 'dark' ? 'notification-drawer-dark' : 'notification-drawer-light'} ${showNotifications ? 'show' : ''}`}>
@@ -340,8 +339,6 @@ const navItems = [
                     </>                   
                 )}
                
-             
-                
                 </div>
             </>
             )}

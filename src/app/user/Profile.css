@@ -241,7 +241,7 @@
      display: none;
  }
 
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
 
     .profile-tabs {
         gap: 10px;
@@ -301,7 +301,7 @@
 }
 
 /* Mobile breakpoint - switch visibility */
-@media (max-width: 945px) {
+@media (max-width: 1198px) {
     .mobile-only {
         display: block !important;
     }

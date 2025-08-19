@@ -144,7 +144,7 @@ p {
 .spanText {
     display: inline-block;
     padding-top: 3px;
-    /* adjust as needed */
+    color:#909192;
 }
 .customSelect {
   position: relative; 
@@ -164,6 +164,7 @@ p {
   position: absolute;
   right: 0.75rem;
   pointer-events: none; 
+  color:#000;
 }
 
 
@@ -211,6 +212,7 @@ p {
     background-color: hsl(120deg 2.34% 9.85%);
     display: block;
     margin: 0 auto;
+    height:40px;
 }
 
 .has-search .form-control {
@@ -370,12 +372,26 @@ p {
 
 .container_card {
     margin-top: 50px;
-    background: rgba(255, 255, 255, 0.671);
+    
     border-radius: 5px;
     border: 1px solid #fff;
     max-width: 540px;
     margin: 0 auto;
     padding: 25px;
+}
+.container_card_dark{
+    background: rgba(255, 255, 255, 0.671);
+    border: 1px solid #fff;
+}
+.container_card_light{
+    background: #fff;
+    border: 1px solid #fff;
+}
+.color-dark{
+    color: #fff;
+}
+.color-dark {
+    color: #000;
 }
 
 @media screen and (max-width: 1200px) {
