@@ -1,5 +1,5 @@
 import "./index.css";
-import "./app.css";
+import "./App.css";
 import Navbar from './components/Navbar';
 import WalletBanner from './components/WalletBoard';
 import DashboardBodySection from "./components/DashboardBodySection";
