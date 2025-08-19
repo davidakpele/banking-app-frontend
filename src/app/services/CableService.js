@@ -1,7 +1,7 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 
 
-export default new class CableServices extends Component{
+// export default new class CableServices extends Component{
 
 
-}
+// }

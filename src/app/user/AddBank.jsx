@@ -28,10 +28,10 @@ const AddBank = () => {
     account_holder_name: '',
     accountNumber: '',
     bankCode: '',
-    bankName:'',
-  })
+    bankName: '',
+  });
   const [message, setMessage] = useState({
-      message:''
+    message:''
   });
    
   const [formData, setFormData] = useState({
@@ -76,19 +76,19 @@ const AddBank = () => {
     navigate(-1);
   }
   
-  const handleBankChange = (selectedOption) => {
-    setSelectedBank(selectedOption);
-    setFormData({
-      ...formData,
-      bank: selectedOption.value,
-      bankName: selectedOption.label,
-      bankdetails: selectedOption ? selectedOption : '',
-    });
-    setErrors({
-      ...error,
-      bank: '',
-    });
-  };
+  // const handleBankChange = (selectedOption) => {
+  //   setSelectedBank(selectedOption);
+  //   setFormData({
+  //     ...formData,
+  //     bank: selectedOption.value,
+  //     bankName: selectedOption.label,
+  //     bankdetails: selectedOption ? selectedOption : '',
+  //   });
+  //   setErrors({
+  //     ...error,
+  //     bank: '',
+  //   });
+  // };
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -228,25 +228,25 @@ const AddBank = () => {
     });
   }
 
-  const getBank = async () => {
-    try {
-      const response = await service.getBankList();
-      if (response.status) {
-        setTimeout(() => {
-          const updatedBanks = response.data.map(bank => ({
-            ...bank,
-            amount: ''
-          }));
-          setBanks(Array.isArray(updatedBanks) ? updatedBanks : []);
-        }, 2000);
+  // const getBank = async () => {
+  //   try {
+  //     const response = await service.getBankList();
+  //     if (response.status) {
+  //       setTimeout(() => {
+  //         const updatedBanks = response.data.map(bank => ({
+  //           ...bank,
+  //           amount: ''
+  //         }));
+  //         setBanks(Array.isArray(updatedBanks) ? updatedBanks : []);
+  //       }, 2000);
         
-      }
+  //     }
       
-    } catch (error) {
-      console.error('Error fetching bank data:', error);
-      setBanks([]); 
-    }
-  }
+  //   } catch (error) {
+  //     console.error('Error fetching bank data:', error);
+  //     setBanks([]); 
+  //   }
+  // }
 
   const handleSelectClick = () => {
     setIsModalOpen(true);

@@ -42,13 +42,11 @@ export const AuthProvider = ({ children }) => {
     const [authenticated, setAuthenticated] = useState(false);
 
     const login = () => {
-        // Your login logic here, e.g., setting authenticated state
         setAuthenticated(true);
         dispatch({ type: 'LOGIN' });
     };
 
     const logout = () => {
-        // Your logout logic here, e.g., clearing authentication state
         setAuthenticated(false);
         dispatch({ type: 'LOGOUT' });
     };
