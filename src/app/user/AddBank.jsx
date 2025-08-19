@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState, Suspense, useContext } from 'react';
 import { Grid } from "@mui/material";
-import service from '../services/BankServices'
+// import service from '../services/BankServices'
 import $ from 'jquery';
 import Navbar from './../../components/Navbar';
 import "./AddBank.css"
@@ -50,27 +50,27 @@ const AddBank = () => {
     bankName:'',
   });
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    const fetchBankList = async () => {
-      try {
-        const response = await service.getAllBankList();
-        if (response && response.status) {
-          const options = response.data.map(bank => ({
-            value: bank.code,
-            label: bank.name
-          }));
-          setOptions(options);
-        } else {
-          console.warning('Error fetching bank list:', response.message);
-        }
-      } catch (error) {
-        console.warning('Error fetching bank list:', error);
-      }
-    };
+  //   const fetchBankList = async () => {
+  //     try {
+  //       const response = await service.getAllBankList();
+  //       if (response && response.status) {
+  //         const options = response.data.map(bank => ({
+  //           value: bank.code,
+  //           label: bank.name
+  //         }));
+  //         setOptions(options);
+  //       } else {
+  //         console.warning('Error fetching bank list:', response.message);
+  //       }
+  //     } catch (error) {
+  //       console.warning('Error fetching bank list:', error);
+  //     }
+  //   };
 
-    fetchBankList();
-  }, []); 
+  //   fetchBankList();
+  // }, []); 
   
   const handlePreviousPage = () => {
     navigate(-1);
@@ -105,72 +105,72 @@ const AddBank = () => {
     });
   };
 
-  const validate = () => {
-    let tempErrors = {
-      bankdetails: {},
-      bank:'',
-      accountNumber: '',
-      accountHolderName: '',
-      bankName: '',
-    };
-    let isValid = true;
-    if (!selectedBank) {
-      tempErrors.bank = 'Please select your bank.';
-      isValid = false;
-    }
-    if (!formData.accountNumber.trim()) {
-      tempErrors.accountNumber = 'Account number is required';
-      isValid = false;
-    } 
-    setMessage("")
-    setErrors(tempErrors);
-    return isValid;
-  }
+  // const validate = () => {
+  //   let tempErrors = {
+  //     bankdetails: {},
+  //     bank:'',
+  //     accountNumber: '',
+  //     accountHolderName: '',
+  //     bankName: '',
+  //   };
+  //   let isValid = true;
+  //   if (!selectedBank) {
+  //     tempErrors.bank = 'Please select your bank.';
+  //     isValid = false;
+  //   }
+  //   if (!formData.accountNumber.trim()) {
+  //     tempErrors.accountNumber = 'Account number is required';
+  //     isValid = false;
+  //   } 
+  //   setMessage("")
+  //   setErrors(tempErrors);
+  //   return isValid;
+  // }
   
-  const handleSubmitForm = async(e) => {
-    e.preventDefault(0);
-    if (validate()) { 
-      $('.search_bank_details').text("Processing...");
-      let tempErrors = {message: ''};
-      tempErrors.message = 'Valid Account Number';
-      tempErrors.accountNumber = 'Invalid Account Details.';
-      service.getUserBanks(formData).then(async (result) => {
-        console.log(result.data.data);
+  // const handleSubmitForm = async(e) => {
+  //   e.preventDefault(0);
+  //   if (validate()) { 
+  //     $('.search_bank_details').text("Processing...");
+  //     let tempErrors = {message: ''};
+  //     tempErrors.message = 'Valid Account Number';
+  //     tempErrors.accountNumber = 'Invalid Account Details.';
+  //     service.getUserBanks(formData).then(async (result) => {
+  //       console.log(result.data.data);
         
-        if (result.data != null && result.status == 200) {
-          setVerify(true)
-          setErrors("")
-          setMessage(tempErrors)
-          setAccountDetails({
-            ...accountDetails,
-            account_holder_name: result.data.data.account_name,
-            accountNumber: result.data.data.account_number,
-            bankCode: formData.bank,
-            bankName:formData.bankName,
-          })
-        } else if (result.data != null && result.data.status == false) {
-          $('.search_bank_details').text("Search");
-          setVerify(false)
-          setMessage("")
+  //       if (result.data != null && result.status == 200) {
+  //         setVerify(true)
+  //         setErrors("")
+  //         setMessage(tempErrors)
+  //         setAccountDetails({
+  //           ...accountDetails,
+  //           account_holder_name: result.data.data.account_name,
+  //           accountNumber: result.data.data.account_number,
+  //           bankCode: formData.bank,
+  //           bankName:formData.bankName,
+  //         })
+  //       } else if (result.data != null && result.data.status == false) {
+  //         $('.search_bank_details').text("Search");
+  //         setVerify(false)
+  //         setMessage("")
          
-          setErrors({
-            ...setErrors,
-            accountNumber:'Invalid Account Details.'
-          });
-          console.error("Invalid Account Details.")
-        }else if (result.response != null) {
-          $('.search_bank_details').text("Search");
-          setVerify(false)
-          setMessage("")
-          tempErrors.accountNumber = result.response.data.message
-          setErrors(tempErrors);
-          console.error(result.response.data.message)
-        }
-      }).catch((err) => {
-        console.warning(err);
-      });
-    }
-  }
+  //         setErrors({
+  //           ...setErrors,
+  //           accountNumber:'Invalid Account Details.'
+  //         });
+  //         console.error("Invalid Account Details.")
+  //       }else if (result.response != null) {
+  //         $('.search_bank_details').text("Search");
+  //         setVerify(false)
+  //         setMessage("")
+  //         tempErrors.accountNumber = result.response.data.message
+  //         setErrors(tempErrors);
+  //         console.error(result.response.data.message)
+  //       }
+  //     }).catch((err) => {
+  //       console.warning(err);
+  //     });
+  //   }
+  // }
 
   const handleCancelBankCreation = (e) => {
      e.preventDefault(0);
@@ -201,32 +201,32 @@ const AddBank = () => {
     setVerify(false)
   }
 
-  const handleAddBank = async (e) => {
-    e.preventDefault(0);
-      $('.add_new_bank_to_list').text("Processing saving...");
-      await service.addNewBank(accountDetails).then((result) => {
-      if (result.data != null && result.status == 201) {
-        setErrors({
-          ...error,
-            accountNumber:''
-        });
-        setAccountExist(false)
-        console.success("New bank details succesfully saved.")
-        setInterval(() => {
-          navigate("/user/deposit");
-        }, 5000);
+  // const handleAddBank = async (e) => {
+  //   e.preventDefault(0);
+  //     $('.add_new_bank_to_list').text("Processing saving...");
+  //     await service.addNewBank(accountDetails).then((result) => {
+  //     if (result.data != null && result.status == 201) {
+  //       setErrors({
+  //         ...error,
+  //           accountNumber:''
+  //       });
+  //       setAccountExist(false)
+  //       console.success("New bank details succesfully saved.")
+  //       setInterval(() => {
+  //         navigate("/user/deposit");
+  //       }, 5000);
         
-      } else {
-        let tempErrors = {
-          accountNumber: '',
-        };
-        tempErrors.accountNumber = result.response.data.message;
-        setErrors(tempErrors);
-        setAccountExist(true)
-        $('.add_new_bank_to_list').text("Add Bank Account");
-      }
-    });
-  }
+  //     } else {
+  //       let tempErrors = {
+  //         accountNumber: '',
+  //       };
+  //       tempErrors.accountNumber = result.response.data.message;
+  //       setErrors(tempErrors);
+  //       setAccountExist(true)
+  //       $('.add_new_bank_to_list').text("Add Bank Account");
+  //     }
+  //   });
+  // }
 
   // const getBank = async () => {
   //   try {
@@ -295,7 +295,7 @@ const AddBank = () => {
                   <div className={`deposit_fill mb-4 ${theme === "dark" ? "color-dark":"color-dark"}`}>
                     <b>NOTE:</b> Accounts added here are solely for deposits and not for withdrawals. Make sure it is your own account and the account name matches Alan Bola
                   </div>
-                  <form method="post" onSubmit={handleSubmitForm} autoComplete='off'>
+                  <form method="post" autoComplete='off'>
                      {verify ? (<>
                      <div className='container'>
                       <div className="currency1 mb-3">
@@ -367,7 +367,7 @@ const AddBank = () => {
                       </span>
                 </>)}
                     {!verify ? (<>
-                      <Button type='submit' onClick={handleSubmitForm} className="custom-btn w-100 mt-4 mb-4 search_bank_details">
+                      <Button type='submit' className="custom-btn w-100 mt-4 mb-4 search_bank_details">
                         Search
                       </Button>
                 </>) : (<>
@@ -386,7 +386,7 @@ const AddBank = () => {
                           
                         </div>
                         <div className="col-md-6">
-                          <Button type='submit' onClick={handleAddBank} className="custom-btn w-100 mt-4 mb-4 pull-left add_new_bank_to_list">
+                          <Button type='submit'className="custom-btn w-100 mt-4 mb-4 pull-left add_new_bank_to_list">
                             Add Bank Account
                           </Button>
                         </div>
