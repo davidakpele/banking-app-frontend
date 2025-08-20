@@ -129,7 +129,7 @@
 }
 
 /* ===== Mobile Scroll for Services & Features ===== */
-@media (max-width: 1198px) {
+@media (max-width: 768px) {
    
     .features-grid {
         display: flex;
@@ -150,7 +150,7 @@
 }
 
 /* ===== Mobile Single Banner Slider ===== */
-@media (max-width: 1198px) {
+@media (max-width: 768px) {
     .banner-section {
         display: flex;
         overflow-x: hidden;

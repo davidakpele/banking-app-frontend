@@ -107,3 +107,23 @@
         width: 70px;
     }
 }
+
+.color-dark {
+    color: #fff !important;
+}
+
+.color-light {
+    color: #fff !important;
+}
+.service-label-dark:hover{
+    background: black !important;
+    color:#fff;
+}
+.service-label-light:hover {
+    background: #fff !important;
+    color: #000;
+}
+.service-label-light {
+    background: #fff !important;
+    color: #000;
+}

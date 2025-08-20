@@ -6,6 +6,10 @@ import './App.css'
 import Wallet from './app/Wallet';
 import Profile from './app/user/Profile';
 import AddBank from './app/user/AddBank';
+import Withdraw from './app/user/Withdraw';
+import LoginComponent from './app/auth/LoginComponent';
+import RegistrationComponent from './app/auth/RegistrationComponent';
+import Logout from './app/auth/Logout';
 
 
 function App() {
@@ -18,6 +22,10 @@ function App() {
           <Route path="/wallets" element={<PublicRoute><Wallet /></PublicRoute>} />
           <Route path="/account/profile" element={<PublicRoute><Profile /></PublicRoute>} />
           <Route path="/account/add-bank" element={<PublicRoute><AddBank /></PublicRoute>} />
+          <Route path="/account/withdraw" element={<PublicRoute><Withdraw /></PublicRoute>} />
+          <Route path="/auth/login" element={<PublicRoute><LoginComponent /> </PublicRoute>} />
+          <Route path="/auth/register" element={<PublicRoute><RegistrationComponent /></PublicRoute>} />
+          <Route path="/auth/logout" element={<PrivateRoute><Logout /></PrivateRoute>} />
           {/* <Route path="/user/deposit" element={<PrivateRoute><Deposit /></PrivateRoute>} />
           <Route path="/deposit/naira" element={<PrivateRoute><Deposit /></PrivateRoute>} />
           <Route path="/user/add-bank" element={<PrivateRoute><AddNewBank /></PrivateRoute>} />
@@ -30,7 +38,7 @@ function App() {
           {/* <Route path="/auth/reset-password" element={<PublicRoute><ResetPassword /></PublicRoute>} />
           <Route path="/auth/forget-password" element={<PublicRoute><ForgetPassword /> </PublicRoute>} />
           <Route path="/auth/register" element={<PublicRoute><Register /></PublicRoute>} />
-          <Route path="/auth/login" element={<PublicRoute><Login /> </PublicRoute>} />
+          
           <Route path="/auth/account-verification" element={<PublicRoute><AccountVerification /> </PublicRoute>} />
           <Route path="/notfound" element={<PublicRoute><NotFound /> </PublicRoute>} />
           <Route path="/404" element={<PublicRoute><NotFound /> </PublicRoute>} />

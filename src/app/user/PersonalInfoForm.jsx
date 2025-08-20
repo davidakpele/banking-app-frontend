@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Form from 'react-bootstrap/Form';
-import { Grid, Card, CardContent, Typography, Box, Avatar } from "@mui/material";
+import { Grid } from "@mui/material";
 import { ThemeContext } from "../../components/context/ThemeContext";
 import './PersonalInfoForm.css';
 

@@ -4,14 +4,13 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState, Suspense, useContext } from 'react';
 import { Grid } from "@mui/material";
-// import service from '../services/BankServices'
 import Navbar from './../../components/Navbar';
 import "./AddBank.css"
 import FiatModal from '../../components/modal/FiatModal';
 import BankListModal from '../../components/modal/BankListModal';
 import { ThemeContext } from "../../components/context/ThemeContext";
 
-const AddBank = () => {
+const Withdraw = () => {
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const [selectedBank, setSelectedBank] = useState(null);
@@ -291,10 +290,7 @@ const AddBank = () => {
                   <div className={`mt-1 ${theme === "dark" ? "color-dark":"color-dark"}`}>Back</div>
                 </div>
                 <div className="justify-content-center">
-                  <h4 className="deposit_card_title">Add New Bank Account</h4>
-                  <div className={`deposit_fill mb-4 ${theme === "dark" ? "color-dark":"color-dark"}`}>
-                    <b>NOTE:</b> Accounts added here are solely for deposits and not for withdrawals. Make sure it is your own account and the account name matches Alan Bola
-                  </div>
+                  <h4 className="deposit_card_title">Widthraw Fiat</h4> 
                   <form method="post" autoComplete='off'>
                      {verify ? (<>
                      <div className='container'>
@@ -347,9 +343,21 @@ const AddBank = () => {
                           </span>
                       </Grid>
                       <Grid item xs={12} md={12}>
-                        <div className="form-group mt-2">
+                        <div className="form-group">
                           <Form.Label htmlFor='accountName' className='required'>Account Number</Form.Label>
                           <Form.Control type="text" placeholder="Enter account number" name="accountNumber" aria-label="secondary" value={formData.accountNumber} onChange={handleChange} style={{height:"50px"}} />
+                        </div> 
+                        <span className="form-bottom-label text-success" style={{ display: message.message ? 'block' : 'none' }}>
+                          <div className="d-flex gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="10" height="10"><circle cx="32" cy="32" r="32" fill="#4aad60" className="color4aad60 svgShape"></circle><circle cx="32" cy="32" r="26.75" fill="#efefef" transform="rotate(-61.328 32 32)" className="colorefefef svgShape"></circle><path fill="#4aad60" d="M27.72 43.18c-.71 0-1.42-.27-1.97-.81l-8.24-8.24a2.77 2.77 0 0 1 0-3.93 2.77 2.77 0 0 1 3.93 0l6.27 6.27 14.83-14.83a2.77 2.77 0 0 1 3.93 0 2.77 2.77 0 0 1 0 3.93l-16.8 16.8c-.53.54-1.24.81-1.95.81z" className="color4aad60 svgShape"></path></svg>
+                            <span className="success_user_bank_name">{message.message}</span>
+                          </div>
+                        </span>
+                      </Grid>
+                      <Grid item xs={12} md={12}>
+                        <div className="form-group">
+                          <Form.Label htmlFor='amount' className='required'>Amount</Form.Label>
+                          <Form.Control type="number" placeholder="Enter Amount" name="amount" aria-label="secondary" value={formData.accountNumber} onChange={handleChange} style={{height:"50px"}} />
                         </div> 
                         <span className="form-bottom-label text-success" style={{ display: message.message ? 'block' : 'none' }}>
                           <div className="d-flex gap-2">
@@ -411,4 +419,4 @@ const AddBank = () => {
   )
 }
 
-export default AddBank
+export default Withdraw
